@@ -6,11 +6,11 @@
 #    By: rteles <rteles@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 20:42:26 by rteles            #+#    #+#              #
-#    Updated: 2022/04/12 22:50:01 by rteles           ###   ########.fr        #
+#    Updated: 2022/04/26 22:13:55 by rteles           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES	=	ft_so_long.c
+SOURCES	=	ft_so_long.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c
 
 OBJECTS	=	$(SOURCES:.c=.o)
 

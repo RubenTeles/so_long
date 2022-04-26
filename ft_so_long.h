@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/04/23 20:41:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/04/26 22:10:52 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <mlx.h>
+# include <fcntl.h>
+# include <errno.h>
+# include "./get_next_line/get_next_line.h"
 
 typedef struct i_terriermon {
 	void	*img;
