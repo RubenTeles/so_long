@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/04/26 22:10:52 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/02 22:20:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,68 +21,66 @@
 # include "./get_next_line/get_next_line.h"
 
 typedef struct i_terriermon {
-	void	*img;
-	char	*p_w0;
-	char	*p_w1;
-	char	*p_w2;
-	char	*p_w3;
-	char	*p_a0;
-	char	*p_a1;
-	char	*p_a2;
-	char	*p_a3;
-	char	*p_s0;
-	char	*p_s1;
-	char	*p_s2;
-	char	*p_s3;
-	char	*p_d0;
-	char	*p_d1;
-	char	*p_d2;
-	char	*p_d3;
-	char	*p_dead;
-	int		img_width;
-	int		img_height;
+	void	*w0;
+	void	*w1;
+	void	*w2;
+	void	*w3;
+	void	*a0;
+	void	*a1;
+	void	*a2;
+	void	*a3;
+	void	*s0;
+	void	*s1;
+	void	*s2;
+	void	*s3;
+	void	*d0;
+	void	*d1;
+	void	*d2;
+	void	*d3;
+	void	*x;
+	int		pos_x;
+	int		pos_y;
 }						t_terrier;
 
 typedef struct i_flamemon {
-	void	*img;
-	char	*p_0;
-	char	*p_1;
-	char	*p_2;
-	char	*p_3;
-	int		img_width;
-	int		img_height;
+	void	*i0;
+	void	*i1;
+	void	*i2;
+	void	*i3;
 }						t_flame;
 
 typedef struct i_menu {
-	void	*img;
-	char	*p_digi;
-	char	*p_paws;
-	char	*p_egg0;
-	char	*p_egg1;
-	char	*p_egg2;
-	char	*p_p0;
-	char	*p_p1;
-	int		img_width;
-	int		img_height;
+	void	*dgi;
+	void	*pws;
+	void	*eg0;
+	void	*eg1;
+	void	*eg2;
+	void	*p0;
+	void	*p1;
 }						t_menu;
 
 typedef struct i_background {
-	void	*img;
-	char	*p_w0;
-	char	*p_w1;
-	char	*p_w2;
-	char	*p_w3;
-	char	*p_b0;
-	char	*p_b1;
-	int		img_width;
-	int		img_height;
+	void	*b0;
+	void	*b1;
+	void	*w0;
+	void	*w1;
+	void	*w2;
+	void	*w3;
 }						t_back;
 
 typedef struct c_all {
+	void		*ptr;
+	void		*win;
+	char		**game;
+	char		**temp;
+	int			max_x;
+	int			max_y;
 	t_terrier	t;
 	t_flame		f;
 	t_menu		m;
 	t_back		b;
+	int			wth;
+	int			hgt;
 }					t_all;
 
 typedef struct s_data {
@@ -96,8 +94,8 @@ typedef struct s_data {
 typedef struct s_img {
 	void	*img;
 	char	*path;
-	int		width;
-	int		height;
+	int		wth;
+	int		hgt;
 }				t_img;
 
 typedef struct s_vars {
@@ -105,7 +103,7 @@ typedef struct s_vars {
 	void	*win;
 }				t_vars;
 
-void	path_images(t_terrier *t, t_flame *f, t_menu *m, t_back *b);
-void	path_terriermon(t_terrier *t);
+void	path_images(t_all *a);
+void	path_terriermon(t_all *a);
 
 #endif
