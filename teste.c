@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 19:32:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/02 21:45:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/04 23:09:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	path_terriermon(t_all *a)
 	a->t.d2 = mlx_xpm_file_to_image(a->ptr, "./F/T/D2.xpm", &a->wth, &a->hgt);
 	a->t.d3 = mlx_xpm_file_to_image(a->ptr, "./F/T/D3.xpm", &a->wth, &a->hgt);
 	a->t.x = mlx_xpm_file_to_image(a->ptr, "./F/T/X.xpm", &a->wth, &a->hgt);
+	a->t.key = 'S';
+	a->paws = 0;
 }
 
 void	path_images(t_all *a)

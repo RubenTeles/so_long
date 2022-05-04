@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/02 23:09:04 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/04 23:14:51 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,117 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int	key_hook(int keycode, t_all *vars)
+int	key_hook(int keycode, t_all *all)
 {
 	int	x;
 	int	y;
+
+	x = all->t.pos_x;
+	y = all->t.pos_y;
 	if (keycode == 53)//ESC
 	{
-		mlx_clear_window(vars->ptr, vars->win);
-		mlx_destroy_window(vars->ptr, vars->win);
+		mlx_clear_window(all->ptr, all->win);
+		mlx_destroy_window(all->ptr, all->win);
 		y = -1;
-		while (++y <= vars->max_y + 1)
+		while (++y <= all->max_y + 1)
 		{
 			x = -1;
-			while (++x <= vars->max_x)
-				free(&vars->game[y][x]);
-			free(&vars->game[y]);
+			while (++x <= all->max_x)
+				free(&all->game[y][x]);
+			free(&all->game[y]);
 		}
 		system("leaks -- so_long");
 		exit(0);
 	}
-	else if (keycode == 13)//W
+	else if (keycode == 13) //W
 	{
-		printf("W \n");
+		if (all->game[y - 1][x] == '1')
+			return (0);
+		else if (all->game[y - 1][x] == 'C')
+			all->game[y - 1][x] = '0';
+		else if (all->game[y - 1][x] == 'E')	//END GAME
+		{
+			all->game[y - 1][x] = '0';
+			printf("END GAME\n");
+			key_hook(53, all);
+		}
+		else if (all->game[y - 1][x] == 'I')	//GAME OVER
+		{
+			all->game[y - 1][x] = '0';
+			all->t.key = 'X';
+			return (0);
+		}
+		all->t.pos_y = y - 1;
+		all->t.key = 'W';
 	}
 	else if (keycode == 0)//A
 	{
-		printf("A \n");
-		return (1);
+		if (all->game[y][x - 1] == '1')
+			return (0);
+		else if (all->game[y][x - 1] == 'C')
+			all->game[y][x - 1] = '0';
+		else if (all->game[y][x - 1] == 'E')	//END GAME
+		{
+			all->game[y][x - 1] = '0';
+			printf("END GAME\n");
+			key_hook(53, all);
+		}
+		else if (all->game[y][x - 1] == 'I')	//GAME OVER
+		{
+			all->game[y][x - 1] = '0';
+			all->t.key = 'X';
+			return (0);
+		}
+		all->t.pos_x = x - 1;
+		all->t.key = 'A';
+		//printf("Andou para cima! (W) \n");
 	}
 	else if (keycode == 1)//S
 	{
-		printf("S \n");
+		if (all->game[y + 1][x] == '1')
+			return (0);
+		else if (all->game[y + 1][x] == 'C')
+			all->game[y + 1][x] = '0';
+		else if (all->game[y + 1][x] == 'E')
+		{
+			all->game[y + 1][x] = '0';
+			printf("END GAME\n");
+			key_hook(53, all);
+		}
+		else if (all->game[y + 1][x] == 'I')
+		{
+			all->game[y + 1][x] = '0';
+			all->t.key = 'X';
+			return (0);
+		}
+		all->t.pos_y = y + 1;
+		all->t.key = 'S';
+		//printf("Andou para cima! (W) \n");
 	}
 	else if (keycode == 2)//D
 	{
-		printf("D \n");
+		if (all->game[y][x + 1] == '1')
+			return (0);
+		else if (all->game[y][x + 1] == 'C')
+			all->game[y][x + 1] = '0';
+		else if (all->game[y][x + 1] == 'E')
+		{
+			all->game[y][x + 1] = '0';
+			printf("END GAME\n");
+			key_hook(53, all);
+		}
+		else if (all->game[y][x + 1] == 'I')
+		{
+			all->game[y][x + 1] = '0';
+			all->t.key = 'X';
+			return (0);
+		}
+		all->t.pos_x = x + 1;
+		all->t.key = 'D';
+		//printf("Andou para a Direita! (D) \n");
 	}
+	put_images(all);
+	printf("Passos: %i \n", ++all->paws);
 	return (0);
 }
 /*void	ft_so_long(void)
@@ -97,7 +172,7 @@ int	animation_wall(t_all *all, int x, int y, int count)
 
 int	animation_back(t_all *all, int x, int y, int count)
 {
-	if((count == 5000) || (count == 15000))
+	if ((count == 5000) || (count == 15000))
 		put_img(*all, all->b.b0, all->wth * x, all->hgt * y);
 	else if ((count == 10000) || (count == 0))
 		put_img(*all, all->b.b1, all->wth * x, all->hgt * y);
@@ -106,7 +181,7 @@ int	animation_back(t_all *all, int x, int y, int count)
 
 int	animation_egg(t_all *all, int x, int y, int count)
 {
-	if((count == 5000) || (count == 15000))
+	if ((count == 5000) || (count == 15000))
 		put_img(*all, all->m.eg0, all->wth * x, all->hgt * y);
 	else if ((count == 10000) || (count == 0))
 		put_img(*all, all->m.eg1, all->wth * x, all->hgt * y);
@@ -115,24 +190,21 @@ int	animation_egg(t_all *all, int x, int y, int count)
 
 int	animation_portal(t_all *all, int x, int y, int count)
 {
-	if((count == 5000) || (count == 15000))
+	if ((count == 5000) || (count == 15000))
 		put_img(*all, all->m.p0, all->wth * x, all->hgt * y);
 	else if ((count == 10000) || (count == 0))
 		put_img(*all, all->m.p1, all->wth * x, all->hgt * y);
 	return (0);
 }
 
-
 int	animation_player(t_all *all, int x, int y, int count)
 {
-	if((count == 5000) || (count == 15000))
+	if ((count == 5000) || (count == 15000))
 		put_img(*all, all->t.s0, all->wth * x, all->hgt * y);
 	else if ((count == 10000) || (count == 0))
 		put_img(*all, all->t.s1, all->wth * x, all->hgt * y);
 	return (0);
 }
-
-
 
 int	put_images(t_all *all)
 {
@@ -155,7 +227,9 @@ int	put_images(t_all *all)
 						animation_back(all, x, y, count);
 						if (all->game[y][x] == 'P')
 						{
-							animation_player(all, x, y, count);
+							all->t.pos_x = x;
+							all->t.pos_y = y;
+							all->game[y][x] = '0';
 						}
 						else if (all->game[y][x] == 'C')
 							animation_egg(all, x, y, count);
@@ -166,6 +240,7 @@ int	put_images(t_all *all)
 			}
 			y++;
 		}
+		animation_player(all, all->t.pos_x, all->t.pos_y, count);
 	}
 	count++;
 	if (count == 19999)
@@ -200,7 +275,6 @@ int	main(int argc, char **argv)
 	char			*last_line;
 	t_img			**img_game;
 	t_img			**tmp;
-	t_vars			mlx;
 	int				x;
 	int				y;
 	void			**background;
@@ -246,13 +320,13 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(all.ptr, put_images, &all);
 	mlx_loop(all.ptr);
 y = -1;
-while (++y <= all.max_y)
+/*while (++y <= all.max_y)
 {
 	x = -1;
 	while (++x <= all.max_x)
 		free(&all.game[y][x]);
 	free(&all.game[y]);
-}
+}*/
 	system("leaks -- so_long");
 	return (0);
 }

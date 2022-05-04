@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/02 22:20:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:30:09 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct i_terriermon {
 	void	*x;
 	int		pos_x;
 	int		pos_y;
+	char	key;
 }						t_terrier;
 
 typedef struct i_flamemon {
@@ -81,6 +82,7 @@ typedef struct c_all {
 	t_back		b;
 	int			wth;
 	int			hgt;
+	int			paws;
 }					t_all;
 
 typedef struct s_data {
@@ -98,12 +100,9 @@ typedef struct s_img {
 	int		hgt;
 }				t_img;
 
-typedef struct s_vars {
-	void	*ptr;
-	void	*win;
-}				t_vars;
-
 void	path_images(t_all *a);
 void	path_terriermon(t_all *a);
+int		put_images(t_all *all);
+
 
 #endif
