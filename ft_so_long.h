@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/04 22:30:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/05 22:32:42 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,20 @@ typedef struct s_img {
 void	path_images(t_all *a);
 void	path_terriermon(t_all *a);
 int		put_images(t_all *all);
-
+int		put_img(t_all all, void *img, int x, int y);
+int		animation_wall(t_all *all, int x, int y, int count);
+int		animation_back(t_all *all, int x, int y, int count);
+int		animation_egg(t_all *all, int x, int y, int count);
+int		animation_portal(t_all *all, int x, int y, int count);
+int		animation_player(t_all *all, int x, int y, int count);
+void	animation_player_walk_w(t_all *all, int x, int y, int count);
+void	animation_player_walk_a(t_all *all, int x, int y, int count);
+void	animation_player_walk_s(t_all *all, int x, int y, int count);
+void	animation_player_walk_d(t_all *all, int x, int y, int count);
+void	animation_player_w(t_all *all, int x, int y, int count);
+void	animation_player_a(t_all *all, int x, int y, int count);
+void	animation_player_s(t_all *all, int x, int y, int count);
+void	animation_player_d(t_all *all, int x, int y, int count);
+char	*ft_itoa(int n);
 
 #endif
