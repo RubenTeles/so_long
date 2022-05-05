@@ -39,10 +39,10 @@ void	path_terriermon(t_all *a)
 void	path_images(t_all *a)
 {
 	path_terriermon(a);
-	//a->f.i0 = mlx_xpm_file_to_image(a->ptr, "./F/E/0.xpm", &a->wth, &a->hgt); //Porque a altura e o comprimento sao diferentes
-	//a->f.i1 = mlx_xpm_file_to_image(a->ptr, "./F/E/1.xpm", &a->wth, &a->hgt);
-	//a->f.i2 = mlx_xpm_file_to_image(a->ptr, "./F/E/2.xpm", &a->wth, &a->hgt);
-	//a->f.i3 = mlx_xpm_file_to_image(a->ptr, "./F/E/3.xpm", &a->wth, &a->hgt);
+	a->f.i0 = mlx_xpm_file_to_image(a->ptr, "./F/E/0.xpm", &a->wth, &a->hgt);
+	a->f.i1 = mlx_xpm_file_to_image(a->ptr, "./F/E/1.xpm", &a->wth, &a->hgt);
+	a->f.i2 = mlx_xpm_file_to_image(a->ptr, "./F/E/2.xpm", &a->wth, &a->hgt);
+	a->f.i3 = mlx_xpm_file_to_image(a->ptr, "./F/E/3.xpm", &a->wth, &a->hgt);
 	a->m.dgi = mlx_xpm_file_to_image(a->ptr, "./F/M/dgi.xpm", &a->wth, &a->hgt);
 	a->m.pws = mlx_xpm_file_to_image(a->ptr, "./F/M/pws.xpm", &a->wth, &a->hgt);
 	a->m.eg0 = mlx_xpm_file_to_image(a->ptr, "./F/M/eg0.xpm", &a->wth, &a->hgt);
