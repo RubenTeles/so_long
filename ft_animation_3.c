@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/05 22:14:51 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/07 19:28:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,17 @@ void	animation_player_walk_d(t_all *all, int x, int y, int count)
 	put_img(*all, all->b.b0, all->wth * (x + 0.66), all->hgt * y);
 	put_img(*all, all->t.d3, all->wth * (x + 0.66), all->hgt * y);
 	animation_player_d(all, x + 1, y, 0);
+}
 
+void	animation_enemy(t_all *all, int x, int y, int count)
+{
+	put_img(*all, all->b.b0, all->wth * x, all->hgt * y);
+	if (count == 0)
+		put_img(*all, all->f.i0, all->wth * x, all->hgt * y);
+	else if (count == 5000)
+		put_img(*all, all->f.i1, all->wth * x, all->hgt * y);
+	else if (count == 10000)
+		put_img(*all, all->f.i2, all->wth * x, all->hgt * y);
+	else if (count == 15000)
+		put_img(*all, all->f.i3, all->wth * x, all->hgt * y);
 }

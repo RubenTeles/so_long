@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/05 22:32:42 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/09 13:34:29 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct i_terriermon {
 	int		pos_x;
 	int		pos_y;
 	char	key;
+	int		player;
 }						t_terrier;
 
 typedef struct i_flamemon {
@@ -53,11 +54,17 @@ typedef struct i_flamemon {
 typedef struct i_menu {
 	void	*dgi;
 	void	*pws;
+	void	*tim;
 	void	*eg0;
 	void	*eg1;
 	void	*eg2;
 	void	*p0;
 	void	*p1;
+	int		portal;
+	int		coins_max;
+	int		coins;
+	int		time;
+	int		paws;
 }						t_menu;
 
 typedef struct i_background {
@@ -82,7 +89,6 @@ typedef struct c_all {
 	t_back		b;
 	int			wth;
 	int			hgt;
-	int			paws;
 }					t_all;
 
 typedef struct s_data {
@@ -100,10 +106,14 @@ typedef struct s_img {
 	int		hgt;
 }				t_img;
 
+void	put_menu(t_all *all, char *str);
+int		end_game(t_all *all);
+int		ft_method(t_all *all, int x, int y, char status);
 void	path_images(t_all *a);
 void	path_terriermon(t_all *a);
 int		put_images(t_all *all);
 int		put_img(t_all all, void *img, int x, int y);
+void	put_str(t_all *all, int number, int color, int x, int incremento);
 int		animation_wall(t_all *all, int x, int y, int count);
 int		animation_back(t_all *all, int x, int y, int count);
 int		animation_egg(t_all *all, int x, int y, int count);
@@ -117,6 +127,11 @@ void	animation_player_w(t_all *all, int x, int y, int count);
 void	animation_player_a(t_all *all, int x, int y, int count);
 void	animation_player_s(t_all *all, int x, int y, int count);
 void	animation_player_d(t_all *all, int x, int y, int count);
+void	animation_enemy(t_all *all, int x, int y, int count);
+void	animation_time(t_all *all, int count);
 char	*ft_itoa(int n);
+int		verification_map(t_all *all, int y, int x, char **str);
+void	ft_erro(t_all *all, int type);
+int		ft_countn_n(char *str);
 
 #endif

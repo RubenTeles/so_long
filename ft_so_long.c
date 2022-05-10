@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/05 22:44:37 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/10 11:51:33 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,157 +16,23 @@
 
 int	key_hook(int keycode, t_all *all)
 {
-	int	x;
-	int	y;
-
-	x = all->t.pos_x;
-	y = all->t.pos_y;
-	if (keycode == 53)//ESC
-	{
-		mlx_clear_window(all->ptr, all->win);
-		mlx_destroy_window(all->ptr, all->win);
-		y = -1;
-		while (all->game[++y])
-			free(all->game[y]);
-		free(all->game);
-		system("leaks -- so_long");
-		exit(0);
-	}
-	else if (keycode == 13)//W
-	{
-		if (all->game[y - 1][x] == '1')
-			return (0);
-		else if (all->game[y - 1][x] == 'C')
-			all->game[y - 1][x] = '0';
-		else if (all->game[y - 1][x] == 'E')	//END GAME
-		{
-			all->game[y - 1][x] = '0';
-			printf("END GAME\n");
-			key_hook(53, all);
-		}
-		else if (all->game[y - 1][x] == 'I')	//GAME OVER
-		{
-			all->game[y - 1][x] = '0';
-			all->t.key = 'X';
-			return (0);
-		}
-		animation_back(all, all->t.pos_x, all->t.pos_y, 0);
-		all->t.pos_y = y - 1;
-		all->t.key = 'W';
-	}
-	else if (keycode == 0)//A
-	{
-		if (all->game[y][x - 1] == '1')
-			return (0);
-		else if (all->game[y][x - 1] == 'C')
-			all->game[y][x - 1] = '0';
-		else if (all->game[y][x - 1] == 'E')	//END GAME
-		{
-			all->game[y][x - 1] = '0';
-			printf("END GAME\n");
-			key_hook(53, all);
-		}
-		else if (all->game[y][x - 1] == 'I')	//GAME OVER
-		{
-			all->game[y][x - 1] = '0';
-			all->t.key = 'X';
-			return (0);
-		}
-		animation_back(all, all->t.pos_x, all->t.pos_y, 0);
-		all->t.pos_x = x - 1;
-		all->t.key = 'A';
-		//printf("Andou para cima! (W) \n");
-	}
-	else if (keycode == 1)//S
-	{
-		if (all->game[y + 1][x] == '1')
-			return (0);
-		else if (all->game[y + 1][x] == 'C')
-		{
-			all->game[y + 1][x] = '0';
-			put_img(*all, all->m.eg2, x, y + 1);
-		}
-		else if (all->game[y + 1][x] == 'E')
-		{
-			all->game[y + 1][x] = '0';
-			printf("END GAME\n");
-			key_hook(53, all);
-		}
-		else if (all->game[y + 1][x] == 'I')
-		{
-			all->game[y + 1][x] = '0';
-			all->t.key = 'X';
-			return (0);
-		}
-		animation_back(all, all->t.pos_x, all->t.pos_y, 0);
-		all->t.pos_y = y + 1;
-		all->t.key = 'S';
-		//printf("Andou para cima! (W) \n");
-	}
-	else if (keycode == 2)//D
-	{
-		if (all->game[y][x + 1] == '1')
-			return (0);
-		else if (all->game[y][x + 1] == 'C')
-		{
-			all->game[y][x + 1] = '0';
-			put_img(*all, all->m.eg2, x, y + 1);
-		}
-		else if (all->game[y][x + 1] == 'E')
-		{
-			all->game[y][x + 1] = '0';
-			printf("END GAME\n");
-			key_hook(53, all);
-		}
-		else if (all->game[y][x + 1] == 'I')
-		{
-			all->game[y][x + 1] = '0';
-			all->t.key = 'X';
-			return (0);
-		}
-		animation_back(all, all->t.pos_x, all->t.pos_y, 0);
-		all->t.pos_x = x + 1;
-		all->t.key = 'D';
-		//printf("Andou para a Direita! (D) \n");
-	}
+	int	i;
+	
+	if (keycode == 53 || keycode == 65307)//ESC
+		i = end_game(all);
+	else if (keycode == 13 || keycode == 119)//W
+		i = ft_method(all, all->t.pos_x, all->t.pos_y - 1, 'W');
+	else if (keycode == 0 || keycode == 97)//A
+		i = ft_method(all, all->t.pos_x - 1, all->t.pos_y, 'A');
+	else if (keycode == 1 || keycode == 115)//S
+		i = ft_method(all, all->t.pos_x, all->t.pos_y + 1, 'S');
+	else if (keycode == 2 || keycode == 100)//D
+		i = ft_method(all, all->t.pos_x + 1, all->t.pos_y, 'D');
 	else
 		return (0);
-	animation_back(all, all->t.pos_x, all->t.pos_y, 0);
-	animation_player(all, all->t.pos_x, all->t.pos_y, 0);
-	printf("Passos: %i \n", ++all->paws);
+	all->m.paws += i;
+	put_menu(all, 0);
 	return (0);
-}
-
-/*void	ft_so_long(void)
-{
-	t_all	ctr;
-	t_vars	mlx;
-	t_img	img;
-	int		a;
-	a = 0;
-	img.path = "./Frames/Terriermon/Dead.xpm";
-	mlx.ptr = mlx_init();
-	if (!mlx.ptr)
-		exit(0);
-	mlx.win = mlx_new_window(mlx.ptr, 1920, 1080, "Jogo");
-	img.img = mlx_xpm_file_to_image(mlx.ptr, img.path, &img.width, &img.height);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, img.img, 0, 0);
-	a = mlx_key_hook(mlx.win, key_hook, &mlx);
-	if (a == 1)
-	{
-		mlx_destroy_image(mlx.ptr, &img);
-	}
-//	mlx_loop_hook(mlx.ptr, asjadsjadj, &mlx);
-	mlx_loop(mlx.ptr);
-	system("leaks -- so_long");
-}*/
-
-void	put_menu(t_all *all)
-{
-	put_img(*all, all->m.dgi, all->wth * 0,
-		all->hgt * (all->max_y + 1));
-	/*mlx_string_put(all->ptr, all->win, all->wth * 40,
-		all->hgt * 0, {{font color|green|greentext}}, ft_itoa(all->paws));*/
 }
 
 int	put_images(t_all *all)
@@ -196,17 +62,19 @@ int	put_images(t_all *all)
 					}
 					else if (all->game[y][x] == 'C')
 						animation_egg(all, x, y, count);
-					else if (all->game[y][x] == 'E')
+					else if (all->game[y][x] == 'E' && (all->m.coins == all->m.coins_max))
 						animation_portal(all, x, y, count);
+					else if (all->game[y][x] == 'I')
+						animation_enemy(all, x, y, count);
 				}
 				x++;
 			}
 			y++;
 		}
-		put_menu(all);
 		animation_player(all, all->t.pos_x, all->t.pos_y, count);
 	}
 	count++;
+	animation_time(all, count);
 	if (count == 19999)
 		count = 0;
 	return (0);
@@ -232,29 +100,31 @@ int	main(int argc, char **argv)
 	int				fd;
 	t_all			all;
 
-
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error Number % d\n", errno);
+		printf("Error Number % d\n", errno);/////
 		perror("Program");
 	}
 	create_map(&all, 0, fd);
-	all.max_x = ft_strlen(all.game[0]) - 1;
-	printf("\nX: %i Y: %i", all.max_x, all.max_y);
+	all.max_x = ft_countn_n(all.game[0]) - 1;
 	all.ptr = mlx_init();
 	if (!all.ptr)
 		exit(0);
 	path_images(&all);
+	verification_map(&all, 0, 0, all.game);
+	//printf("Max_X: %i Max_Y: %i\n", all.max_x, all.max_y);
+	//printf("Player: %i Portal: %i Coins: %i\n", all.t.player, all.m.portal , all.m.coins_max);
 	all.wth = 34;
 	all.hgt = 31;
-	all.win = mlx_new_window(all.ptr, (all.max_x) * all.wth,
+	all.win = mlx_new_window(all.ptr, (all.max_x + 1) * all.wth,
 			(all.max_y + 2) * all.hgt, "Jogo");
+	put_menu(&all, 0);
+	put_str(&all, all.m.time, 0x00FFFFFF, all.wth *  1.5, -1);
 	mlx_key_hook(all.win, key_hook, &all);
 	mlx_loop_hook(all.ptr, put_images, &all);
 	mlx_loop(all.ptr);
-	system("leaks -- so_long");
+	//system("leaks -- so_long");
 	return (0);
 }
-//using argv[1]
 //ft_PRINTF
