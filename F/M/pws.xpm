@@ -1,9 +1,9 @@
 /* XPM */
-static char *Paws1650738477[] = {
+static char *Paws1651840587[] = {
 /* columns rows colors chars-per-pixel */
 "34 31 2 1 ",
 "  c None",
-". c black",
+". c #E0E0C0",
 /* pixels */
 "                                  ",
 "                                  ",
