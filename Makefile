@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SOURCES	=	ft_so_long.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ft_path.c ft_animation_1.c ft_animation_2.c ft_animation_3.c ft_itoa.c
+SOURCES	=	ft_so_long.c ./get_next_line/get_next_line.c ./get_next_line/get_next_line_utils.c ft_path.c ft_animation_1.c ft_animation_2.c ft_animation_3.c ft_animation_4.c ft_method.c ft_verification.c ft_itoa.c
 
 OBJECTS	=	$(SOURCES:.c=.o)
 
