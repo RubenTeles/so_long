@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/10 20:19:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 21:06:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct i_flamemon {
 	void	*i1;
 	void	*i2;
 	void	*i3;
+	void	*k;
 }						t_flame;
 
 typedef struct i_menu {
@@ -66,6 +67,7 @@ typedef struct i_menu {
 	int		coins;
 	int		time;
 	int		paws;
+	int		lives;
 }						t_menu;
 
 typedef struct i_background {
@@ -86,6 +88,7 @@ typedef struct c_all {
 	int			max_y;
 	int			frst_pos_x;
 	int			frst_pos_y;
+	int			status_player;
 	t_terrier	t;
 	t_terrier	j;
 	t_flame		f;
@@ -113,6 +116,7 @@ typedef struct s_img {
 void	put_menu(t_all *all, char *str);
 int		end_game(t_all *all);
 int		ft_method(t_all *all, int x, int y, char status);
+int		ft_method_player2(t_all *all, int x, int y, char status);
 void	path_images(t_all *a);
 void	path_terriermon(t_all *a);
 int		put_images(t_all *all);
@@ -131,10 +135,15 @@ void	animation_player_w(t_all *all, int x, int y, int count);
 void	animation_player_a(t_all *all, int x, int y, int count);
 void	animation_player_s(t_all *all, int x, int y, int count);
 void	animation_player_d(t_all *all, int x, int y, int count);
+int		animation_player2(t_all *all, int x, int y, int count);
+void	animation_player2_w(t_all *all, int x, int y, int count);
+void	animation_player2_a(t_all *all, int x, int y, int count);
+void	animation_player2_s(t_all *all, int x, int y, int count);
+void	animation_player2_d(t_all *all, int x, int y, int count);
 void	animation_enemy(t_all *all, int x, int y, int count);
 void	animation_time(t_all *all, int count);
 char	*ft_itoa(int n);
-int		verification_map(t_all *all, int y, int x, char **str);
+void	verification_map(t_all *all, int y, int x, char **str);
 void	ft_erro(t_all *all, int type);
 int		ft_countn_n(char *str);
 void	ft_lives(t_all *all);

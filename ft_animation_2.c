@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/10 22:24:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:08:12 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void	animation_player_d(t_all *all, int x, int y, int count)
 
 int	animation_player(t_all *all, int x, int y, int count)
 {
+	if (all->status_player == 2)
+	{
+		animation_player2(all, x, y, count);
+		return (0);
+	}
 	if (count == 0)
 		put_img(*all, all->b.b0, all->wth * x, all->hgt * y);
 	if (all->t.key == 'W')

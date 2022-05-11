@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 19:32:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/10 21:25:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 21:06:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	path_player2(t_all *a)
 	a->j.d3 = mlx_xpm_file_to_image(a->ptr, "./F/J/D3.xpm", &a->wth, &a->hgt);
 	a->j.x = mlx_xpm_file_to_image(a->ptr, "./F/J/X.xpm", &a->wth, &a->hgt);
 	a->j.key = 'S';
-	a->j.lives = 3;
 	a->j.player = 0;
 }
 
@@ -57,8 +56,8 @@ void	path_player(t_all *a)
 	a->t.d3 = mlx_xpm_file_to_image(a->ptr, "./F/T/D3.xpm", &a->wth, &a->hgt);
 	a->t.x = mlx_xpm_file_to_image(a->ptr, "./F/T/X.xpm", &a->wth, &a->hgt);
 	a->t.key = 'S';
-	a->t.lives = 3;
 	a->t.player = 0;
+	a->status_player = 1;
 	path_player2(a);
 }
 
@@ -69,6 +68,7 @@ void	path_images(t_all *a)
 	a->f.i1 = mlx_xpm_file_to_image(a->ptr, "./F/E/1.xpm", &a->wth, &a->hgt);
 	a->f.i2 = mlx_xpm_file_to_image(a->ptr, "./F/E/2.xpm", &a->wth, &a->hgt);
 	a->f.i3 = mlx_xpm_file_to_image(a->ptr, "./F/E/3.xpm", &a->wth, &a->hgt);
+	a->f.k = mlx_xpm_file_to_image(a->ptr, "./F/E/k.xpm", &a->wth, &a->hgt);
 	a->m.dgi = mlx_xpm_file_to_image(a->ptr, "./F/M/dgi.xpm", &a->wth, &a->hgt);
 	a->m.pws = mlx_xpm_file_to_image(a->ptr, "./F/M/pws.xpm", &a->wth, &a->hgt);
 	a->m.tim = mlx_xpm_file_to_image(a->ptr, "./F/M/tim.xpm", &a->wth, &a->hgt);
@@ -87,4 +87,5 @@ void	path_images(t_all *a)
 	a->m.coins = 0;
 	a->m.coins_max = 0;
 	a->m.portal = 0;
+	a->m.lives = 3;
 }

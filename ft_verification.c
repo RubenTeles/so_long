@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/10 21:24:08 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 14:22:00 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,14 @@ void	ft_erro(t_all *all, int type)
 	else if (type == 3)
 		printf("Error: The Map must be surrounded by Walls!\n");
 	else if (type == 4)
-	{
 		printf("Error: Can not read the file!\n");
-		exit(0);
-		return ;
-	}
-	end_game(all);
+	exit(0);
 }
 
-int	verification_map_2(t_all *all, char **str)
+void	verification_map_2(t_all *all, char **str)
 {
 	int	x;
-	int y;
+	int	y;
 
 	x = all->max_x + 1;
 	y = all->max_y + 1;
@@ -60,7 +56,7 @@ int	verification_map_2(t_all *all, char **str)
 		ft_erro(all, 2);
 }
 
-int	verification_map(t_all *all, int y, int x, char **str)
+void	verification_map(t_all *all, int y, int x, char **str)
 {
 	while (str[y])
 	{
@@ -69,11 +65,11 @@ int	verification_map(t_all *all, int y, int x, char **str)
 		x = 0;
 		while (str[y][x] != '\n' && str[y][x])
 		{
-			if (str[0][x] != '1' || str[all->max_y][x] != '1' || str[y][all->max_x] != '1'
-				||  str[y][0] != '1')
+			if (str[0][x] != '1' || str[all->max_y][x] != '1' ||
+				str[y][all->max_x] != '1' || str[y][0] != '1')
 				ft_erro(all, 3);
 			if (str[y][x] == '0' || str[y][x] == '1' || str[y][x] == 'I')
-				x = x; 
+				x = x;
 			else if (str[y][x] == 'P')
 				all->t.player += 1;
 			else if (str[y][x] == 'E')
@@ -87,5 +83,4 @@ int	verification_map(t_all *all, int y, int x, char **str)
 		y++;
 	}
 	verification_map_2(all, str);
-	return (0);
 }
