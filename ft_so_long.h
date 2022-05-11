@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/09 13:34:29 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/10 20:19:35 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct i_terriermon {
 	int		pos_y;
 	char	key;
 	int		player;
+	int		lives;
 }						t_terrier;
 
 typedef struct i_flamemon {
@@ -83,7 +84,10 @@ typedef struct c_all {
 	char		**temp;
 	int			max_x;
 	int			max_y;
+	int			frst_pos_x;
+	int			frst_pos_y;
 	t_terrier	t;
+	t_terrier	j;
 	t_flame		f;
 	t_menu		m;
 	t_back		b;
@@ -133,5 +137,6 @@ char	*ft_itoa(int n);
 int		verification_map(t_all *all, int y, int x, char **str);
 void	ft_erro(t_all *all, int type);
 int		ft_countn_n(char *str);
+void	ft_lives(t_all *all);
 
 #endif

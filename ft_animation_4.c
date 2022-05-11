@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/09 13:20:53 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/10 21:07:19 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	put_menu(t_all *all, char *str)
 	put_str(all, all->m.coins_max, collor, all->wth *  5.5, 1);
 	put_img(*all, all->m.pws, all->wth * 7,	all->hgt * (all->max_y + 1));
 	put_str(all, all->m.paws, 0x00FFFFFF, all->wth *  8.5, 1);
+	
+	//put_str(all, all->t.lives, 0x00FFFFFF, all->wth *  8.5, 1);
 }
 
 void	animation_time(t_all *all, int count)
@@ -51,11 +53,22 @@ void	animation_time(t_all *all, int count)
 	if ((count == 0) || (count == 10000))
 	{
 		if (all->m.time == -1)
-			end_game(all);
+			ft_lives(all);
 		else if (all->m.time > 10)
 		put_str(all, all->m.time, 0x00FFFFFF, all->wth *  1.5, -1);
 		else if (all->m.time <= 10)
 			put_str(all, all->m.time, 0x00FF0000, all->wth *  1.5, -1);
 		all->m.time--;
 	}
+}
+
+void	animation_live(t_all *all, int live)//Por fazer
+{
+	if (live == -1)
+		end_game(all);
+	else if (all->m.time > 10)
+	put_str(all, all->m.time, 0x00FFFFFF, all->wth *  1.5, -1);
+	else if (all->m.time <= 10)
+		put_str(all, all->m.time, 0x00FF0000, all->wth *  1.5, -1);
+	all->m.time--;
 }

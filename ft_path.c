@@ -6,12 +6,36 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 19:32:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/08 21:31:58 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/10 21:25:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "ft_so_long.h"
+
+void	path_player2(t_all *a)
+{
+	a->j.w0 = mlx_xpm_file_to_image(a->ptr, "./F/J/W0.xpm", &a->wth, &a->hgt);
+	a->j.w1 = mlx_xpm_file_to_image(a->ptr, "./F/J/W1.xpm", &a->wth, &a->hgt);
+	a->j.w2 = mlx_xpm_file_to_image(a->ptr, "./F/J/W2.xpm", &a->wth, &a->hgt);
+	a->j.w3 = mlx_xpm_file_to_image(a->ptr, "./F/J/W3.xpm", &a->wth, &a->hgt);
+	a->j.a0 = mlx_xpm_file_to_image(a->ptr, "./F/J/A0.xpm", &a->wth, &a->hgt);
+	a->j.a1 = mlx_xpm_file_to_image(a->ptr, "./F/J/A1.xpm", &a->wth, &a->hgt);
+	a->j.a2 = mlx_xpm_file_to_image(a->ptr, "./F/J/A2.xpm", &a->wth, &a->hgt);
+	a->j.a3 = mlx_xpm_file_to_image(a->ptr, "./F/J/A3.xpm", &a->wth, &a->hgt);
+	a->j.s0 = mlx_xpm_file_to_image(a->ptr, "./F/J/S0.xpm", &a->wth, &a->hgt);
+	a->j.s1 = mlx_xpm_file_to_image(a->ptr, "./F/J/S1.xpm", &a->wth, &a->hgt);
+	a->j.s2 = mlx_xpm_file_to_image(a->ptr, "./F/J/S2.xpm", &a->wth, &a->hgt);
+	a->j.s3 = mlx_xpm_file_to_image(a->ptr, "./F/J/S3.xpm", &a->wth, &a->hgt);
+	a->j.d0 = mlx_xpm_file_to_image(a->ptr, "./F/J/D0.xpm", &a->wth, &a->hgt);
+	a->j.d1 = mlx_xpm_file_to_image(a->ptr, "./F/J/D1.xpm", &a->wth, &a->hgt);
+	a->j.d2 = mlx_xpm_file_to_image(a->ptr, "./F/J/D2.xpm", &a->wth, &a->hgt);
+	a->j.d3 = mlx_xpm_file_to_image(a->ptr, "./F/J/D3.xpm", &a->wth, &a->hgt);
+	a->j.x = mlx_xpm_file_to_image(a->ptr, "./F/J/X.xpm", &a->wth, &a->hgt);
+	a->j.key = 'S';
+	a->j.lives = 3;
+	a->j.player = 0;
+}
 
 void	path_player(t_all *a)
 {
@@ -32,8 +56,10 @@ void	path_player(t_all *a)
 	a->t.d2 = mlx_xpm_file_to_image(a->ptr, "./F/T/D2.xpm", &a->wth, &a->hgt);
 	a->t.d3 = mlx_xpm_file_to_image(a->ptr, "./F/T/D3.xpm", &a->wth, &a->hgt);
 	a->t.x = mlx_xpm_file_to_image(a->ptr, "./F/T/X.xpm", &a->wth, &a->hgt);
-	a->t.key = 'S'; 
+	a->t.key = 'S';
+	a->t.lives = 3;
 	a->t.player = 0;
+	path_player2(a);
 }
 
 void	path_images(t_all *a)
@@ -58,7 +84,6 @@ void	path_images(t_all *a)
 	a->b.b0 = mlx_xpm_file_to_image(a->ptr, "./F/B/b0.xpm", &a->wth, &a->hgt);
 	a->b.b1 = mlx_xpm_file_to_image(a->ptr, "./F/B/b1.xpm", &a->wth, &a->hgt);
 	a->m.paws = 0;
-	a->m.time = 100;
 	a->m.coins = 0;
 	a->m.coins_max = 0;
 	a->m.portal = 0;

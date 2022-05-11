@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/10 14:01:56 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/10 21:24:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ void	ft_erro(t_all *all, int type)
 		printf("Error: The Map doesn't have the Minimum of Components!\n");
 	else if (type == 3)
 		printf("Error: The Map must be surrounded by Walls!\n");
+	else if (type == 4)
+	{
+		printf("Error: Can not read the file!\n");
+		exit(0);
+		return ;
+	}
 	end_game(all);
 }
 
@@ -45,10 +51,10 @@ int	verification_map_2(t_all *all, char **str)
 	int y;
 
 	x = all->max_x + 1;
-	y = all->max_y;
+	y = all->max_y + 1;
 	if (x < 3 && y < 3)
 		ft_erro(all, 1);
-	else if ((x == 3 && y <= 5) || (y == 3 && x <= 5))
+	else if ((x == 3 && y < 5) || (y == 3 && x < 5))
 		ft_erro(all, 1);
 	if (all->m.coins_max < 1 || all->m.portal < 1 || all->t.player < 1)
 		ft_erro(all, 2);

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/10 11:51:33 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/10 22:25:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,27 @@ int	key_hook(int keycode, t_all *all)
 		i = ft_method(all, all->t.pos_x, all->t.pos_y + 1, 'S');
 	else if (keycode == 2 || keycode == 100)//D
 		i = ft_method(all, all->t.pos_x + 1, all->t.pos_y, 'D');
+	else
+		return (0);
+	all->m.paws += i;
+	put_menu(all, 0);
+	return (0);
+}
+
+int	key_hook_player2(int keycode, t_all *all)
+{
+	int	i;
+	
+	if (keycode == 53 || keycode == 65307)//ESC
+		i = end_game(all);
+	else if (keycode == 65362)// || keycode == 65362)//Up
+		i = ft_method(all, all->j.pos_x, all->j.pos_y - 1, 'W');
+	else if (keycode == 65361)// || keycode == 97)//Left
+		i = ft_method(all, all->j.pos_x - 1, all->j.pos_y, 'A');
+	else if (keycode == 65364)// || keycode == 115)//Down
+		i = ft_method(all, all->j.pos_x, all->j.pos_y + 1, 'S');
+	else if (keycode == 65363)// || keycode == 100)//Right
+		i = ft_method(all, all->j.pos_x + 1, all->j.pos_y, 'D');
 	else
 		return (0);
 	all->m.paws += i;
@@ -58,6 +79,10 @@ int	put_images(t_all *all)
 					{
 						all->t.pos_x = x;
 						all->t.pos_y = y;
+						all->j.pos_x = x;
+						all->j.pos_y = y;
+						all->frst_pos_x = x;
+						all->frst_pos_y = y;
 						all->game[y][x] = '0';
 					}
 					else if (all->game[y][x] == 'C')
@@ -102,10 +127,7 @@ int	main(int argc, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		printf("Error Number % d\n", errno);/////
-		perror("Program");
-	}
+		ft_erro(&all, 4);
 	create_map(&all, 0, fd);
 	all.max_x = ft_countn_n(all.game[0]) - 1;
 	all.ptr = mlx_init();
@@ -113,11 +135,16 @@ int	main(int argc, char **argv)
 		exit(0);
 	path_images(&all);
 	verification_map(&all, 0, 0, all.game);
+	all.m.time = (all.m.coins_max + all.m.portal + all.t.player) * 3;
 	//printf("Max_X: %i Max_Y: %i\n", all.max_x, all.max_y);
 	//printf("Player: %i Portal: %i Coins: %i\n", all.t.player, all.m.portal , all.m.coins_max);
 	all.wth = 34;
 	all.hgt = 31;
-	all.win = mlx_new_window(all.ptr, (all.max_x + 1) * all.wth,
+	if (all.max_x < 10)
+		all.win = mlx_new_window(all.ptr, (10) * all.wth,
+			(all.max_y + 2) * all.hgt, "Jogo");
+	else
+		all.win = mlx_new_window(all.ptr, (all.max_x + 1) * all.wth,
 			(all.max_y + 2) * all.hgt, "Jogo");
 	put_menu(&all, 0);
 	put_str(&all, all.m.time, 0x00FFFFFF, all.wth *  1.5, -1);
