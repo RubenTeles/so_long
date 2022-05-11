@@ -6,11 +6,10 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/11 15:08:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 23:55:55 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_so_long.h"
 
 void	animation_player_w(t_all *all, int x, int y, int count)
@@ -47,11 +46,6 @@ void	animation_player_d(t_all *all, int x, int y, int count)
 
 int	animation_player(t_all *all, int x, int y, int count)
 {
-	if (all->status_player == 2)
-	{
-		animation_player2(all, x, y, count);
-		return (0);
-	}
 	if (count == 0)
 		put_img(*all, all->b.b0, all->wth * x, all->hgt * y);
 	if (all->t.key == 'W')
@@ -66,19 +60,3 @@ int	animation_player(t_all *all, int x, int y, int count)
 		put_img(*all, all->t.x, all->wth * x, all->hgt * y);
 	return (0);
 }
-		//img->relative_path = "./Frames/Veemon/V_A0.xpm";
-		//img->img = mlx_xpm_file_to_image(vars->ptr, img->relative_path, &img->img_width, &img->img_height);
-		//mlx_put_image_to_window(vars->ptr, vars->win, img->img, 0, 0);
-/*	int w;
-	int y;*/
-//	img = mlx_xpm_file_to_image;
-//	mlx_put_image_to_window;
-
-//	mlx_hook(mlx.win, 2, 1L << 5, close, &mlx);
-	//printf("Inseriste a Tecla %i \n", keycode);*/
-
-/*	img.img = mlx_new_image(mlx.ptr, 1920, 1080);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	my_mlx_pixel_put(&img, 300, 300, 0x00FF0000);*/

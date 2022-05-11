@@ -6,11 +6,10 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/07 19:07:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 23:18:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_so_long.h"
 
 int	put_img(t_all all, void *img, int x, int y)

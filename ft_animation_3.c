@@ -6,13 +6,12 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/07 19:28:55 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 23:55:04 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_so_long.h"
-
+/*
 void	animation_player_walk_w(t_all *all, int x, int y, int count)
 {
 	put_img(*all, all->b.b0, all->wth * x, all->hgt * (y - 0.33));
@@ -48,7 +47,7 @@ void	animation_player_walk_d(t_all *all, int x, int y, int count)
 	put_img(*all, all->t.d3, all->wth * (x + 0.66), all->hgt * y);
 	animation_player_d(all, x + 1, y, 0);
 }
-
+*/
 void	animation_enemy(t_all *all, int x, int y, int count)
 {
 	put_img(*all, all->b.b0, all->wth * x, all->hgt * y);

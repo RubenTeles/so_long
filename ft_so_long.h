@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/11 21:06:19 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/11 23:59:24 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <errno.h>
 # include "./get_next_line/get_next_line.h"
+# include "./ft_printf/ft_printf.h"
 
 typedef struct i_terriermon {
 	void	*w0;
@@ -42,6 +43,7 @@ typedef struct i_terriermon {
 	int		pos_y;
 	char	key;
 	int		player;
+	int		mode;
 	int		lives;
 }						t_terrier;
 
@@ -62,12 +64,13 @@ typedef struct i_menu {
 	void	*eg2;
 	void	*p0;
 	void	*p1;
+	void	*liv;
 	int		portal;
 	int		coins_max;
 	int		coins;
 	int		time;
 	int		paws;
-	int		lives;
+	int		other_blocks;
 }						t_menu;
 
 typedef struct i_background {
@@ -88,7 +91,6 @@ typedef struct c_all {
 	int			max_y;
 	int			frst_pos_x;
 	int			frst_pos_y;
-	int			status_player;
 	t_terrier	t;
 	t_terrier	j;
 	t_flame		f;
@@ -113,15 +115,19 @@ typedef struct s_img {
 	int		hgt;
 }				t_img;
 
-void	put_menu(t_all *all, char *str);
+void	create_map(t_all *all, int y, int fd);
+void	put_menu(t_all *all);
 int		end_game(t_all *all);
 int		ft_method(t_all *all, int x, int y, char status);
-int		ft_method_player2(t_all *all, int x, int y, char status);
+int		ft_method_mode2(t_all *all, int x, int y, char status);
 void	path_images(t_all *a);
-void	path_terriermon(t_all *a);
+void	path_mode1(t_all *a, t_terrier *t);
+void	path_mode2(t_all *a, t_terrier *j);
+void	path_begining_game(t_all *a);
 int		put_images(t_all *all);
 int		put_img(t_all all, void *img, int x, int y);
-void	put_str(t_all *all, int number, int color, int x, int incremento);
+void	put_str_plus(t_all *all, int number, int color, int x);
+void	put_str_less(t_all *all, int number, int color, int x);
 int		animation_wall(t_all *all, int x, int y, int count);
 int		animation_back(t_all *all, int x, int y, int count);
 int		animation_egg(t_all *all, int x, int y, int count);
@@ -144,7 +150,8 @@ void	animation_enemy(t_all *all, int x, int y, int count);
 void	animation_time(t_all *all, int count);
 char	*ft_itoa(int n);
 void	verification_map(t_all *all, int y, int x, char **str);
-void	ft_erro(t_all *all, int type);
+void	verification_parameter(t_all *all, int argc, char **argv);
+void	ft_erro(int type);
 int		ft_countn_n(char *str);
 void	ft_lives(t_all *all);
 
