@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 17:42:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 21:33:17 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	key_hook_mode2(int keycode, t_all *all)
 	int	i;
 
 	if (keycode == 53 || keycode == 65307)
-		i = end_game(all);
+		i = bye_bye(all);
 	else if (keycode == 13 || keycode == 119)
 		i = ft_method_mode2(all, all->t.pos_x, all->t.pos_y - 1, 'W');
 	else if (keycode == 0 || keycode == 97)
@@ -41,7 +41,7 @@ int	key_hook_mode1(int keycode, t_all *all)
 	if (all->t.mode == 2)
 		i = key_hook_mode2(keycode, all);
 	else if (keycode == 53 || keycode == 65307)
-		i = end_game(all);
+		i = bye_bye(all);
 	else if (keycode == 13 || keycode == 119)
 		i = ft_method(all, all->t.pos_x, all->t.pos_y - 1, 'W');
 	else if (keycode == 0 || keycode == 97)
@@ -50,7 +50,7 @@ int	key_hook_mode1(int keycode, t_all *all)
 		i = ft_method(all, all->t.pos_x, all->t.pos_y + 1, 'S');
 	else if (keycode == 2 || keycode == 100)
 		i = ft_method(all, all->t.pos_x + 1, all->t.pos_y, 'D');
-	else if (keycode == 46)
+	else if (keycode == 46 || keycode == 109)
 	{
 		path_mode2(all, &all->t);
 		i = animation_player(all, all->t.pos_x, all->t.pos_y, 0);
@@ -86,7 +86,6 @@ void	ft_loop_game(t_all *all, int argc, char **argv)
 {
 	verification_parameter(all, argv, argc);
 	all->max_x = ft_countn_n(all->game[0]) - 1;
-	all->ptr = mlx_init();
 	if (!all->ptr)
 		exit(0);
 	path_images(all);
@@ -99,9 +98,7 @@ void	ft_loop_game(t_all *all, int argc, char **argv)
 				(all->max_y + 2) * all->hgt, "Jogo");
 	put_menu(all);
 	mlx_key_hook(all->win, key_hook_mode1, all);
-	mlx_hook(all->win, 17, 0, end_game, all);
-	mlx_loop_hook(all->ptr, put_images, all);
-	mlx_loop(all->ptr);
+	mlx_hook(all->win, 17, 0, bye_bye, all);
 }
 
 int	main(int argc, char **argv)
@@ -113,9 +110,13 @@ int	main(int argc, char **argv)
 		ft_erro(4);
 		return (0);
 	}
+	all.ptr = mlx_init();
+	all.t.lives = 3;
 	all.argc_max = argc - 1;
 	all.argc_corrent = 1;
 	all.argv = argv;
 	ft_loop_game(&all, all.argc_corrent, all.argv);
+	mlx_loop_hook(all.ptr, put_images, &all);
+	mlx_loop(all.ptr);
 	return (0);
 }

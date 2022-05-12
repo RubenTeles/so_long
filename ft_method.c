@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 17:50:38 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 19:00:16 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	end_game(t_all *all)
 	int	y;
 
 	mlx_clear_window(all->ptr, all->win);
-	mlx_destroy_window(all->ptr, all->win);
 	y = -1;
 	while (all->game[++y])
 		free(all->game[y]);
 	free(all->game);
+	mlx_destroy_window(all->ptr, all->win);
 	all->argc_corrent += 1;
 	if (all->t.lives > 0 && (all->argc_corrent <= all->argc_max))
 	{

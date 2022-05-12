@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 17:32:41 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 18:56:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,21 +109,6 @@ typedef struct c_all {
 	char		**argv;
 }					t_all;
 
-typedef struct s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
-typedef struct s_img {
-	void	*img;
-	char	*path;
-	int		wth;
-	int		hgt;
-}				t_img;
-
 void	ft_loop_game(t_all *all, int argc, char **argv);
 void	create_map(t_all *all, int y, int fd);
 void	put_menu(t_all *all);
@@ -164,5 +149,6 @@ void	verification_parameter(t_all *all, char **argv, int x);
 void	ft_erro(int type);
 int		ft_countn_n(char *str);
 void	ft_lives(t_all *all);
+int		bye_bye(t_all *all);
 
 #endif

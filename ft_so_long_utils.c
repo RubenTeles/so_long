@@ -6,11 +6,18 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 17:51:14 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 20:47:37 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_so_long.h"
+
+int	bye_bye(t_all *all)
+{
+	all->t.lives = 0;
+	end_game(all);
+	return (0);
+}
 
 void	put_images_2(t_all *all, int x, int y, int count)
 {

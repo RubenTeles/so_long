@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 19:32:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 17:45:57 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 18:41:58 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	path_begining_game(t_all *a)
 {
 	a->m.paws = 0;
 	a->m.coins = 0;
-	a->t.lives = 3;
 	a->t.key = 'S';
 	a->m.time = (a->m.coins_max + a->m.portal + a->t.player) * 3;
 	a->wth = 68;
