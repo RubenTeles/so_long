@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 14:10:35 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:50:38 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ int	end_game(t_all *all)
 	while (all->game[++y])
 		free(all->game[y]);
 	free(all->game);
+	all->argc_corrent += 1;
+	if (all->t.lives > 0 && (all->argc_corrent <= all->argc_max))
+	{
+		ft_loop_game(all, all->argc_corrent, all->argv);
+		return (0);
+	}
 	exit(0);
 	return (0);
 }

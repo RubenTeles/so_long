@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 14:21:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:51:14 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	put_images(t_all *all)
 	y = 0;
 	if (count == 0 || count == 5000 || count == 10000 || count == 15000)
 	{
-		mlx_clear_window(all->ptr, all->win);//aqui
+		mlx_clear_window(all->ptr, all->win);
 		while ((y <= all->max_y))
 		{
 			put_images_2(all, 0, y, count);

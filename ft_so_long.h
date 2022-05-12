@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 14:07:45 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:32:41 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct i_terriermon {
 	int		pos_x;
 	int		pos_y;
 	char	key;
+	int		t_ani;
 	int		player;
 	int		mode;
 	int		lives;
@@ -53,6 +54,7 @@ typedef struct i_flamemon {
 	void	*i2;
 	void	*i3;
 	void	*k;
+	int		f_ani;
 }						t_flame;
 
 typedef struct i_menu {
@@ -62,8 +64,10 @@ typedef struct i_menu {
 	void	*eg0;
 	void	*eg1;
 	void	*eg2;
+	int		e_ani;
 	void	*p0;
 	void	*p1;
+	int		p_ani;
 	void	*liv;
 	int		portal;
 	int		coins_max;
@@ -76,10 +80,12 @@ typedef struct i_menu {
 typedef struct i_background {
 	void	*b0;
 	void	*b1;
+	int		b_ani;
 	void	*w0;
 	void	*w1;
 	void	*w2;
 	void	*w3;
+	int		w_ani;
 }						t_back;
 
 typedef struct c_all {
@@ -98,6 +104,9 @@ typedef struct c_all {
 	t_back		b;
 	int			wth;
 	int			hgt;
+	int			argc_max;
+	int			argc_corrent;
+	char		**argv;
 }					t_all;
 
 typedef struct s_data {
@@ -115,6 +124,7 @@ typedef struct s_img {
 	int		hgt;
 }				t_img;
 
+void	ft_loop_game(t_all *all, int argc, char **argv);
 void	create_map(t_all *all, int y, int fd);
 void	put_menu(t_all *all);
 int		end_game(t_all *all);
@@ -150,7 +160,7 @@ void	animation_enemy(t_all *all, int x, int y, int count);
 void	animation_time(t_all *all, int count);
 char	*ft_itoa(int n);
 void	verification_map(t_all *all, int y, int x, char **str);
-void	verification_parameter(t_all *all, int argc, char **argv);
+void	verification_parameter(t_all *all, char **argv, int x);
 void	ft_erro(int type);
 int		ft_countn_n(char *str);
 void	ft_lives(t_all *all);

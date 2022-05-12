@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 19:32:56 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 14:10:49 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:45:57 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	path_mode2(t_all *a, t_terrier *j)
 	j->d2 = mlx_xpm_file_to_image(a->ptr, "./F/J/D2.xpm", &a->wth, &a->hgt);
 	j->d3 = mlx_xpm_file_to_image(a->ptr, "./F/J/D3.xpm", &a->wth, &a->hgt);
 	j->x = mlx_xpm_file_to_image(a->ptr, "./F/J/X.xpm", &a->wth, &a->hgt);
+	a->m.eg0 = mlx_xpm_file_to_image(a->ptr, "./F/J/eg0.xpm", &a->wth, &a->hgt);
+	a->m.eg1 = mlx_xpm_file_to_image(a->ptr, "./F/J/eg1.xpm", &a->wth, &a->hgt);
+	a->m.eg2 = mlx_xpm_file_to_image(a->ptr, "./F/J/eg2.xpm", &a->wth, &a->hgt);
 	j->mode = 2;
 }
 
@@ -54,6 +57,9 @@ void	path_mode1(t_all *a, t_terrier *t)
 	t->d2 = mlx_xpm_file_to_image(a->ptr, "./F/T/D2.xpm", &a->wth, &a->hgt);
 	t->d3 = mlx_xpm_file_to_image(a->ptr, "./F/T/D3.xpm", &a->wth, &a->hgt);
 	t->x = mlx_xpm_file_to_image(a->ptr, "./F/T/X.xpm", &a->wth, &a->hgt);
+	a->m.eg0 = mlx_xpm_file_to_image(a->ptr, "./F/T/eg0.xpm", &a->wth, &a->hgt);
+	a->m.eg1 = mlx_xpm_file_to_image(a->ptr, "./F/T/eg1.xpm", &a->wth, &a->hgt);
+	a->m.eg2 = mlx_xpm_file_to_image(a->ptr, "./F/T/eg2.xpm", &a->wth, &a->hgt);
 	t->mode = 1;
 }
 
@@ -80,9 +86,6 @@ void	path_images(t_all *a)
 	a->m.dgi = mlx_xpm_file_to_image(a->ptr, "./F/M/dgi.xpm", &a->wth, &a->hgt);
 	a->m.pws = mlx_xpm_file_to_image(a->ptr, "./F/M/pws.xpm", &a->wth, &a->hgt);
 	a->m.tim = mlx_xpm_file_to_image(a->ptr, "./F/M/tim.xpm", &a->wth, &a->hgt);
-	a->m.eg0 = mlx_xpm_file_to_image(a->ptr, "./F/M/eg0.xpm", &a->wth, &a->hgt);
-	a->m.eg1 = mlx_xpm_file_to_image(a->ptr, "./F/M/eg1.xpm", &a->wth, &a->hgt);
-	a->m.eg2 = mlx_xpm_file_to_image(a->ptr, "./F/M/eg2.xpm", &a->wth, &a->hgt);
 	a->m.liv = mlx_xpm_file_to_image(a->ptr, "./F/M/liv.xpm", &a->wth, &a->hgt);
 	a->m.p0 = mlx_xpm_file_to_image(a->ptr, "./F/M/p0.xpm", &a->wth, &a->hgt);
 	a->m.p1 = mlx_xpm_file_to_image(a->ptr, "./F/M/p1.xpm", &a->wth, &a->hgt);

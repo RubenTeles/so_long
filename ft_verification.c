@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/11 23:52:12 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 17:27:39 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,16 @@ void	verification_map(t_all *all, int y, int x, char **str)
 	verification_map_2(all);
 }
 
-void	verification_parameter(t_all *all, int argc, char **argv)
+void	verification_parameter(t_all *all, char **argv, int x)
 {
 	int	fd;
 	int	len;
 
-	if (argc < 2)
-		ft_erro(4);
-	len = ft_strlen(argv[1]);
-	if (argv[1][len - 4] != '.' || argv[1][len - 3] != 'b'
-		|| argv[1][len - 2] != 'e' || argv[1][len - 1] != 'r')
+	len = ft_strlen(argv[x]);
+	if (argv[x][len - 4] != '.' || argv[x][len - 3] != 'b'
+		|| argv[x][len - 2] != 'e' || argv[x][len - 1] != 'r')
 		ft_erro(5);
-	fd = open(argv[1], O_RDONLY);
+	fd = open(argv[x], O_RDONLY);
 	if (fd < 0)
 		ft_erro(4);
 	create_map(all, 0, fd);

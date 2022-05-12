@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 14:18:30 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 16:02:46 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	put_menu(t_all *all)
 	put_str_less(all, all->m.paws, 0x00FFFFFF, all->wth * 8.5);
 	put_img(*all, all->m.liv, all->wth * 9.5, all->hgt * (all->max_y + 1));
 	put_str_plus(all, all->t.lives, 0x00FFFFFF, all->wth * 11);
+	mlx_string_put(all->ptr, all->win, all->wth * 10.4,
+		all->hgt * (all->max_y + 1.6), 0x00FF0000, "Create by: rteles");
 }
 
 void	animation_time(t_all *all, int count)
@@ -93,5 +95,4 @@ void	animation_time(t_all *all, int count)
 		else if (all->m.time <= 10)
 			put_str(all, all->m.time, 0x00FF0000, all->wth * 1.5);
 	}
-
 }
