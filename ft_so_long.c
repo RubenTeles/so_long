@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 00:15:18 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:38:11 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int	main(int argc, char **argv)
 		exit(0);
 	path_images(&all);
 	verification_map(&all, 0, 0, all.game);
-	if (all.max_x < 10)
-		all.win = mlx_new_window(all.ptr, (10) * all.wth,
+	if (all.max_x < 11)
+		all.win = mlx_new_window(all.ptr, (11) * all.wth,
 				(all.max_y + 2) * all.hgt, "Jogo");
 	else
 		all.win = mlx_new_window(all.ptr, (all.max_x + 1) * all.wth,

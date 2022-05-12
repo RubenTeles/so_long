@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 00:01:40 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:11:08 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	put_menu(t_all *all)
 	put_img(*all, all->m.pws, all->wth * 7, all->hgt * (all->max_y + 1));
 	put_str_less(all, all->m.paws, 0x00FFFFFF, all->wth * 8.5);
 	put_img(*all, all->m.liv, all->wth * 9.5, all->hgt * (all->max_y + 1));
-	put_str_less(all, all->t.lives, 0x00FFFFFF, all->wth * 10.5);
+	put_str_plus(all, all->t.lives, 0x00FFFFFF, all->wth * 10.5);
 }
 
 void	animation_time(t_all *all, int count)

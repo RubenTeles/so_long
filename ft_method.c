@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 00:06:52 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 11:41:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	ft_lives(t_all *all)
 	all->t.lives -= 1;
 	if (all->t.lives > 0)
 	{
-		ft_printf("lives: %i\n", all->t.lives);
 		all->t.pos_x = all->frst_pos_x;
 		all->t.pos_y = all->frst_pos_y;
 		all->t.key = 'S';
 		put_str_plus(all, all->m.time, 0x00000000, all->wth * 1.5);
 		all->m.time = (all->m.coins_max + all->m.portal + all->t.player) * 3;
+		put_str_plus(all, all->t.lives, 0x00FFFFFF, all->wth * 10.5);
 		put_str_plus(all, all->m.time, 0x00FFFFFF, all->wth * 1.5);
 	}
 	else
