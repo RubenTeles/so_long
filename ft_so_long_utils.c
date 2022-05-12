@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 00:15:09 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:21:22 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,25 @@ void	put_images_2(t_all *all, int x, int y, int count)
 
 int	put_images(t_all *all)
 {
-	static int	count = 0;
-	int			y;
+	int	count;
+	int	y;
 
+	count = all->count;
 	y = 0;
 	if (count == 0 || count == 5000 || count == 10000 || count == 15000)
 	{
+		mlx_clear_window(all->ptr, all->win);//aqui
 		while ((y <= all->max_y))
 		{
 			put_images_2(all, 0, y, count);
 			y++;
 		}
 		animation_player(all, all->t.pos_x, all->t.pos_y, count);
+		put_menu(all);
+		animation_time(all, count);
 	}
-	count++;
-	animation_time(all, count);
-	if (count == 19999)
-		count = 0;
+	all->count++;
+	if (all->count == 19999)
+		all->count = 0;
 	return (0);
 }

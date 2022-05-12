@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 21:57:29 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 11:41:22 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:10:35 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,19 @@ void	ft_lives(t_all *all)
 		all->t.pos_x = all->frst_pos_x;
 		all->t.pos_y = all->frst_pos_y;
 		all->t.key = 'S';
-		put_str_plus(all, all->m.time, 0x00000000, all->wth * 1.5);
+		mlx_clear_window(all->ptr, all->win);
 		all->m.time = (all->m.coins_max + all->m.portal + all->t.player) * 3;
 		put_str_plus(all, all->t.lives, 0x00FFFFFF, all->wth * 10.5);
 		put_str_plus(all, all->m.time, 0x00FFFFFF, all->wth * 1.5);
+		if (all->count > 15000)
+			all->count = 15000;
+		else if (all->count > 10000)
+			all->count = 10000;
+		else if (all->count > 5000)
+			all->count = 5000;
+		else
+			all->count = 0;
+		put_images(all);
 	}
 	else
 		end_game(all);

@@ -6,7 +6,7 @@
 /*   By: rteles <rteles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 19:53:14 by rteles            #+#    #+#             */
-/*   Updated: 2022/05/12 11:41:26 by rteles           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:07:45 by rteles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct c_all {
 	int			max_y;
 	int			frst_pos_x;
 	int			frst_pos_y;
+	int			count;
 	t_terrier	t;
 	t_terrier	j;
 	t_flame		f;
