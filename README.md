@@ -1,7 +1,6 @@
 # SO_LONG
 
-![gif](https://user-images.githubusercontent.com/75394884/196117789-146b1645-4a93-4203-877c-d2e6634e32e0.gif)
-
+https://user-images.githubusercontent.com/75394884/196118164-96bb7096-9766-49e6-8679-0aed741f6b14.mp4
 
 Imagens:
 https://www.spriters-resource.com/ - Sprites
