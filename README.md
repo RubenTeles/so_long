@@ -1,7 +1,6 @@
 # SO_LONG
 
-https://user-images.githubusercontent.com/75394884/196117177-4ea51c39-53d8-45f5-b7b1-9200d5617012.mp4
-
+![gif](https://user-images.githubusercontent.com/75394884/196117789-146b1645-4a93-4203-877c-d2e6634e32e0.gif)
 
 
 Imagens:
