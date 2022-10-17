@@ -1,4 +1,7 @@
-# so_long
+# SO_LONG
+
+https://user-images.githubusercontent.com/75394884/196117177-4ea51c39-53d8-45f5-b7b1-9200d5617012.mp4
+
 
 
 Imagens:
