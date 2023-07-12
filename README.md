@@ -15,10 +15,11 @@ In the so_long project, I developed a simple 2D game where a player must navigat
 
 
 Sources:
+
 • https://www.spriters-resource.com/ - Sprites
 
-• https://www.online-image-editor.com/ - Para Tirar Fundo
+• https://www.online-image-editor.com/ - Remove Background
 
-• https://ezgif.com/sprite-cutter - Para criar frames
+• https://ezgif.com/sprite-cutter - Created Frames
 
 • https://www.imageconvert.org/png-to-xpm#google_vignette - Convert PNG to XPM
