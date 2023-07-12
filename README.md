@@ -1,9 +1,11 @@
 # SO_LONG
 
+In the so_long project, I developed a simple 2D game where a player must navigate a maze, collect items, and avoid obstacles.
+
+
+
 https://user-images.githubusercontent.com/75394884/196118164-96bb7096-9766-49e6-8679-0aed741f6b14.mp4
 
-
-In the so_long project, I developed a simple 2D game where a player must navigate a maze, collect items, and avoid obstacles.
 
 • I used the MiniLibX library to create graphics and visual interactions, including sprite rendering, window manipulation, and keyboard event handling.
 
